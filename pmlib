@@ -1,0 +1,4 @@
+#! /bin/sh
+
+rm -rf target/* && javac -Xlint -d target -cp lib/snakeyaml-1.13.jar -sourcepath src/main $(find src/main -iname "*.java")
+java -cp target:lib/snakeyaml-1.13.jar pmlib.Main $*

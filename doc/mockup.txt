@@ -1,0 +1,105 @@
+ 1 Som filmsamlare
+   kan jag se hur många filmer jag har
+   för att få en grundläggande överblick på mitt filminnehav.
+   Kommentar: T.ex. via kommando "count".
+   Kommentar: Initiera biblioteket med en given filmlista.
+
+$ pmlib count
+3
+
+
+ 2 Som filmsamlare
+   kan jag registrera en ny film till samlingen
+   för att kunna utöka mitt innehav.
+   Kommentar: T.ex. via kommando "add Alien 1979".
+
+$ pmlib add Alien 1979
+
+
+ 3 Som filmsamlare
+   kan jag lista alla filmer i mitt bibliotek
+   för att få en överblick av mitt filminnehav.
+   Kommentar: T.ex. via kommando "list".
+
+$ pmlib list
+Batman Begins (2005)
+The Dark Knight (2008)
+The Dark Knight Rises (2012)
+
+
+ 4 Som filmsamlare
+   kan filmen jag registerar avvisas
+   när den redan existerar i samlingen
+   Kommentar: Felmeddelande är valfritt
+
+$ pmlib add Alien 1979
+Already exists: Alien (1979)
+
+
+ 5 Som filmsamlare
+   kan jag när jag listar filmer
+   se vilka filmer som är utlånade
+   Kommentar: T.ex. via kommando "list".
+
+$ pmlib list
+  Batman Begins (2005)
+* The Dark Knight (2008)
+  The Dark Knight Rises (2012)
+
+
+ 6 Som filmsamlare
+   kan jag registrera ett lån av en film
+   för att hålla reda på vilka filmer som är utlånade.
+   Kommentar: T.ex. via kommando "lend Alien".
+
+$ pmlib lend Alien
+
+
+ 7 Som filmsamlare
+   kan jag markera en utlånad film som återlämnad
+   för att veta vilka filmer jag har fått tillbaka.
+   Kommentar: T.ex. via kommando "return Alien"
+
+$ pmlib return Alien
+
+
+ 8 Som filmsamlare
+   kan jag lista alla filmlån
+   för att se vilka filmer som för tillfället är utlånade.
+   Kommentar: T.ex. via kommando "loans".
+
+$ pmlib loans
+The Dark Knight (2008)
+
+
+ 9 Som filmsamlare
+   kan jag registrera vem som lånar en film
+   för att hålla reda på vem som har lånat vilka filmer.
+   Kommentar: T.ex. via kommando "lend Alien Johan".
+   Kommentar: Listan på filmlån visar nu vem som lånat filmen
+
+$ pmlib lend Alien Johan
+
+
+10 Som filmsamlare
+   kan jag i listan med filmlån
+   se hur länge en film varit utlånad
+   för att kunna påminna långlånare om att lämna tillbaka filmen
+
+$ pmlib loans
+The Dark Knight (2008)          Johan (2014-01-24)
+The Dark Knight Rises (2012)    Adam (2013-12-24)
+
+
+11 Som filmsamlare
+   kan jag få ut en lista på vilka personer och vad de lånat länge
+   för att enkelt kunna skicka påminnelser
+   Kommentar: T.ex. via kommando "expired".
+
+$ pmlib expired
+The Dark Knight Rises (2012)    Adam (2013-12-24)
+
+
+12 Som filmsamlare
+   kan jag stänga av pmlib utan att någon information i registret försvinner
+   för att inte förlora värdefull filmtittartid på att återskapa data.
