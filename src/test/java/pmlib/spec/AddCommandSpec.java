@@ -12,6 +12,6 @@ public class AddCommandSpec {
     public void addMovieToLibrary() {
         MovieRepository library = new MovieRepository();
         new AddCommand(library, new String[] {"add", "Alien", "1979"}).call();
-        assertEquals(1, library.size());
+        assertEquals(1, library.getMovies().size());
     }
 }
