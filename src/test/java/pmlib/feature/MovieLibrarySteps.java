@@ -43,6 +43,12 @@ public class MovieLibrarySteps {
         assertThat(result, not(startsWith("Unknown command:")));
     }
 
+    @När("^jag lägger till filmen \"([^\"]*)\" från (\\d+)$")
+    public void addMovie(String title, String year) throws Throwable {
+        result = parser.buildCommand(new String[] {"add", title, year}).call();
+        assertThat(result, not(startsWith("Unknown command:")));
+    }
+
     @Så("^kommer resultatet vara: \"([^\"]*)\"$")
     public void compareResult(String listing) {
         assertThat(result, equalTo(listing));

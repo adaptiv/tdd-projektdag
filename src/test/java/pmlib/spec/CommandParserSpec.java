@@ -21,4 +21,10 @@ public class CommandParserSpec {
         Command command = new CommandParser(new MovieRepository()).buildCommand(new String[] {"count"});
         assertEquals(CountCommand.class, command.getClass());
     }
+
+    @Test
+    public void parseAddCommand() throws ReflectiveOperationException {
+        Command command = new CommandParser(new MovieRepository()).buildCommand(new String[] {"add", "Alien", "1979"});
+        assertEquals(AddCommand.class, command.getClass());
+    }
 }

@@ -34,4 +34,7 @@ public class MovieRepository {
         movies = (List<Movie>) ((Map) new Yaml().load(new FileReader("movies.yml"))).get("movies");
     }
 
+    public void add(Movie movie) {
+        movies.add(movie);
+    }
 }

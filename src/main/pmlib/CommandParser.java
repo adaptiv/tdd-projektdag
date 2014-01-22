@@ -14,6 +14,7 @@ public class CommandParser {
     public CommandParser(MovieRepository library) {
         this.library = library;
         commandByName.put("count", CountCommand.class);
+        commandByName.put("add", AddCommand.class);
     }
 
     public Command buildCommand(String[] args) {
