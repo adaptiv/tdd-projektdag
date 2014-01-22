@@ -1,6 +1,5 @@
 package pmlib.feature;
 
-import cucumber.api.DataTable;
 import cucumber.api.PendingException;
 import cucumber.api.java.sv.Givet;
 import cucumber.api.java.sv.När;
@@ -9,9 +8,11 @@ import pmlib.CommandParser;
 import pmlib.Movie;
 import pmlib.MovieRepository;
 
-import static org.hamcrest.CoreMatchers.*;
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.CoreMatchers.startsWith;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.IsNot.not;
+import static org.junit.internal.matchers.StringContains.containsString;
 
 public class MovieLibrarySteps {
 
@@ -37,6 +38,13 @@ public class MovieLibrarySteps {
         parser = new CommandParser(library);
     }
 
+    @Givet("^att jag har en filmsamling$")
+    public void createdPopulatedLibraryWithTheBatmanTrilogy() throws Throwable {
+        Movie[] movies = {new Movie("Batman Begins", 2005), new Movie("The Dark Knight", 2008), new Movie("The Dark Knight Rises", 2012)};
+        library = new MovieRepository(movies);
+        parser = new CommandParser(library);
+    }
+
     @När("^jag räknar antalet filmer$")
     public void countMovies() throws Exception {
         result = parser.buildCommand(new String[] {"count"}).call();
@@ -49,8 +57,21 @@ public class MovieLibrarySteps {
         assertThat(result, not(startsWith("Unknown command:")));
     }
 
+    @När("^jag listar innehåller i filmbilioteket$")
+    public void listMovies() throws Throwable {
+        result = parser.buildCommand(new String[] {"list"}).call();
+        assertThat(result, not(startsWith("Unknown command:")));
+    }
+
     @Så("^kommer resultatet vara: \"([^\"]*)\"$")
     public void compareResult(String listing) {
         assertThat(result, equalTo(listing));
+    }
+
+    @Så("^kommer den innehålla samtliga filmer$")
+    public void resultIncludeMoviesInLibrary() throws Throwable {
+        for (Movie movie : library.getMovies()) {
+            assertThat(result, containsString(movie.getTitle()));
+        }
     }
 }

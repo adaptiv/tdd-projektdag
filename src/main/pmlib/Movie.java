@@ -12,4 +12,12 @@ public class Movie {
         this.title = title;
         this.year = year;
     }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public Integer getYear() {
+        return year;
+    }
 }
