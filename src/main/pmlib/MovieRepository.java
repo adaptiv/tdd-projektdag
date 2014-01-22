@@ -19,10 +19,6 @@ public class MovieRepository {
         this.movies = new ArrayList<Movie>(Arrays.asList(movies));
     }
 
-    public int size() {
-        return movies.size();
-    }
-
     @SuppressWarnings("serial")
     void save() throws IOException {
         new Yaml().dump(new HashMap() {{
@@ -36,5 +32,9 @@ public class MovieRepository {
 
     public void add(Movie movie) {
         movies.add(movie);
+    }
+
+    public List<Movie> getMovies() {
+        return movies;
     }
 }

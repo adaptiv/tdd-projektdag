@@ -3,14 +3,14 @@ package pmlib.command;
 import pmlib.MovieRepository;
 
 public class CountCommand implements Command {
-    private MovieRepository library;
+    private MovieRepository repository;
 
-    public CountCommand(MovieRepository library, String[] args) {
-        this.library = library;
+    public CountCommand(MovieRepository repository, String[] args) {
+        this.repository = repository;
     }
 
     @Override
     public String call() {
-        return String.valueOf(library.size());
+        return String.valueOf(repository.getMovies().size());
     }
 }
