@@ -31,7 +31,7 @@ public class CommandParserSpec {
 
     @Test
     public void parseListCommand() throws ReflectiveOperationException {
-        Command command = new CommandParser(new MovieRepository()).buildCommand(new String[] {"list"});
+        Command command = new CommandParser(new MovieLibrary()).buildCommand(new String[] {"list"});
         assertEquals(ListCommand.class, command.getClass());
     }
 }

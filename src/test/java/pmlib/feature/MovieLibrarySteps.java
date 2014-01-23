@@ -41,7 +41,7 @@ public class MovieLibrarySteps {
     @Givet("^att jag har en filmsamling$")
     public void createdPopulatedLibraryWithTheBatmanTrilogy() throws Throwable {
         Movie[] movies = {new Movie("Batman Begins", 2005), new Movie("The Dark Knight", 2008), new Movie("The Dark Knight Rises", 2012)};
-        library = new MovieRepository(movies);
+        library = new MovieLibrary(movies);
         parser = new CommandParser(library);
     }
 
