@@ -18,9 +18,7 @@ public class ErrorCommand extends Command {
         for (String arg : args) {
             result += arg + " ";
         }
-        if (result.endsWith(" ")) {
-            result = result.substring(0, result.length() - 1);
-        }
-        return result;
+
+        return result.trim();
     }
 }
