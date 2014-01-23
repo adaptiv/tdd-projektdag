@@ -1,1 +1,2 @@
-movies: []
+library: !!pmlib.MovieLibrary
+  movies: []
