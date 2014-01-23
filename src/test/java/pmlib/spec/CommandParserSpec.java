@@ -25,7 +25,7 @@ public class CommandParserSpec {
 
     @Test
     public void parseAddCommand() throws ReflectiveOperationException {
-        Command command = new CommandParser(new MovieRepository()).buildCommand(new String[] {"add", "Alien", "1979"});
+        Command command = new CommandParser(new MovieLibrary()).buildCommand(new String[] {"add", "Alien", "1979"});
         assertEquals(AddCommand.class, command.getClass());
     }
 

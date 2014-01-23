@@ -21,4 +21,8 @@ public class MovieLibrary {
     public void setMovies(List<Movie> movies) {
         this.movies = movies;
     }
+
+    public void add(Movie movie) {
+        movies.add(movie);
+    }
 }
