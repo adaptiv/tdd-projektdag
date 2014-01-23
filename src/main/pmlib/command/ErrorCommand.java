@@ -10,7 +10,7 @@ public class ErrorCommand extends Command {
 
     @Override
     public String call() {
-        return "Unknown command: '" + stringifyArgs() + "'";
+        return String.format("Unknown command: '%s'", stringifyArgs());
     }
 
     private String stringifyArgs() {
