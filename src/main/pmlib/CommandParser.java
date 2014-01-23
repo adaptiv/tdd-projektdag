@@ -1,8 +1,9 @@
 package pmlib;
 
-import pmlib.command.*;
+import pmlib.command.Command;
+import pmlib.command.CountCommand;
+import pmlib.command.ErrorCommand;
 
-import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -17,7 +18,8 @@ public class CommandParser {
     }
 
     public Command buildCommand(String[] args) {
-        Class commandClass = (Class) commandByName.get(args[0]);
+        String firstArg = (args.length > 0) ? args[0] : "";
+        Class commandClass = (Class) commandByName.get(firstArg);
         if (commandClass != null) {
             try {
                 return (Command) commandClass.getConstructor(MovieLibrary.class, String[].class).newInstance(library, args);
