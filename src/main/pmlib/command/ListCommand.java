@@ -17,7 +17,7 @@ public class ListCommand extends Command {
         String result = "";
         for (Iterator<Movie> i = library.getMovies().iterator(); i.hasNext(); ) {
             Movie movie = i.next();
-            result += movie.getTitle() + " (" + movie.getYear() + ")";
+            result += movie;
             if (i.hasNext()) {
                 result += "\n";
             }

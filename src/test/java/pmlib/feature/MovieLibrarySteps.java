@@ -45,6 +45,12 @@ public class MovieLibrarySteps {
         parser = new CommandParser(library);
     }
 
+    @Givet("^att filmbiblioteket innehåller \"([^\"]*)\" från (\\d+)$")
+    public void createLibraryWith(String title, int year) throws Throwable {
+        library = new MovieLibrary(new Movie[] {new Movie(title, year)});
+        parser = new CommandParser(library);
+    }
+
     @När("^jag räknar antalet filmer$")
     public void countMovies() throws Exception {
         result = parser.buildCommand(new String[] {"count"}).call();

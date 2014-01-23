@@ -10,3 +10,10 @@ Egenskap: Lägga till filmer
     När jag lägger till filmen "Alien" från 1979
     Och jag räknar antalet filmer
     Så kommer resultatet vara: "1"
+
+  Scenario: Avvisa en existerande film
+    Givet att filmbiblioteket innehåller "Alien" från 1979
+    När jag lägger till filmen "Alien" från 1979
+    Så kommer resultatet vara: "Already exists: Alien (1979)"
+    När jag räknar antalet filmer
+    Så kommer resultatet vara: "1"

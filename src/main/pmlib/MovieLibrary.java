@@ -22,7 +22,10 @@ public class MovieLibrary {
         this.movies = movies;
     }
 
-    public void add(Movie movie) {
+    public void add(Movie movie) throws DuplicateMovieException {
+        if (movies.contains(movie)){
+            throw new DuplicateMovieException();
+        }
         movies.add(movie);
     }
 }

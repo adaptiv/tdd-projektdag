@@ -1,5 +1,6 @@
 package pmlib.command;
 
+import pmlib.DuplicateMovieException;
 import pmlib.Movie;
 import pmlib.MovieLibrary;
 import pmlib.MovieRepository;
@@ -13,7 +14,11 @@ public class AddCommand extends Command {
     @Override
     public String call() {
         Movie movie = new Movie(args[1], Integer.valueOf(args[2]));
-        library.add(movie);
+        try {
+            library.add(movie);
+        } catch (DuplicateMovieException e) {
+            return "Already exists: " + movie;
+        }
         return null;
     }
 }
