@@ -10,31 +10,15 @@ import java.util.*;
 
 @SuppressWarnings({"rawtypes", "unchecked"})
 public class MovieRepository {
-    private List<Movie> movies = new ArrayList<Movie>();
-
-    public MovieRepository() {
-    }
-
-    public MovieRepository(Movie[] movies) {
-        this.movies = new ArrayList<Movie>(Arrays.asList(movies));
-    }
 
     @SuppressWarnings("serial")
-    void save() throws IOException {
+    public void save(final MovieLibrary library) throws IOException {
         new Yaml().dump(new HashMap() {{
-            put("movies", movies);
+            put("movies", library);
         }}, new FileWriter("movies.yml"));
     }
 
-    public void load() throws FileNotFoundException {
-        movies = (List<Movie>) ((Map) new Yaml().load(new FileReader("movies.yml"))).get("movies");
-    }
-
-    public void add(Movie movie) {
-        movies.add(movie);
-    }
-
-    public List<Movie> getMovies() {
-        return movies;
+    public MovieLibrary load() throws FileNotFoundException {
+        return (MovieLibrary) ((Map) new Yaml().load(new FileReader("movies.yml"))).get("movies");
     }
 }

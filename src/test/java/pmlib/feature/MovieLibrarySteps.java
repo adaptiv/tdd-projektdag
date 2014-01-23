@@ -6,6 +6,7 @@ import cucumber.api.java.sv.När;
 import cucumber.api.java.sv.Så;
 import pmlib.CommandParser;
 import pmlib.Movie;
+import pmlib.MovieLibrary;
 import pmlib.MovieRepository;
 
 import static org.hamcrest.CoreMatchers.equalTo;
@@ -18,12 +19,11 @@ public class MovieLibrarySteps {
 
     private CommandParser parser;
     private String result;
-    private MovieRepository library;
-    private Movie movie;
+    private MovieLibrary library;
 
     @Givet("att filmbiblioteket är tomt")
     public void createEmptyLibrary() {
-        library = new MovieRepository();
+        library = new MovieLibrary();
         parser = new CommandParser(library);
     }
 
@@ -34,7 +34,7 @@ public class MovieLibrarySteps {
             movies[i] = new Movie();
 
         }
-        library = new MovieRepository(movies);
+        library = new MovieLibrary(movies);
         parser = new CommandParser(library);
     }
 

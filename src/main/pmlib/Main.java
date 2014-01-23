@@ -6,11 +6,11 @@ public class Main {
 
     public static void main(String[] args) throws Exception {
         MovieRepository repository = new MovieRepository();
-        repository.load();
+        MovieLibrary library = repository.load();
 
-        Command command = new CommandParser(repository).buildCommand(args);
+        Command command = new CommandParser(library).buildCommand(args);
         System.out.println(command.call());
-        repository.save();
+        repository.save(library);
     }
 
 }
