@@ -1,16 +1,15 @@
 package pmlib.command;
 
-import pmlib.MovieRepository;
+import pmlib.MovieLibrary;
 
-public class CountCommand implements Command {
-    private MovieRepository library;
+public class CountCommand extends Command {
 
-    public CountCommand(MovieRepository library, String[] args) {
-        this.library = library;
+    public CountCommand(MovieLibrary library, String[] args) {
+        super(library, args);
     }
 
     @Override
     public String call() {
-        return String.valueOf(library.size());
+        return String.valueOf(library.getMovies().size());
     }
 }

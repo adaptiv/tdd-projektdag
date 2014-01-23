@@ -8,10 +8,10 @@ import java.util.Map;
 
 @SuppressWarnings({"rawtypes","unchecked"})
 public class CommandParser {
-    private MovieRepository library;
+    private MovieLibrary library;
     private Map commandByName = new HashMap();
 
-    public CommandParser(MovieRepository library) {
+    public CommandParser(MovieLibrary library) {
         this.library = library;
         commandByName.put("count", CountCommand.class);
     }
@@ -20,12 +20,12 @@ public class CommandParser {
         Class commandClass = (Class) commandByName.get(args[0]);
         if (commandClass != null) {
             try {
-                return (Command) commandClass.getConstructor(MovieRepository.class, String[].class).newInstance(library, args);
+                return (Command) commandClass.getConstructor(MovieLibrary.class, String[].class).newInstance(library, args);
             } catch (ReflectiveOperationException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        return new ErrorCommand(args);
+        return new ErrorCommand(library, args);
     }
 }

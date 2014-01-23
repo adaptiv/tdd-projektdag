@@ -1,10 +1,11 @@
 package pmlib.command;
 
-public class ErrorCommand implements Command {
-    private String[] args;
+import pmlib.MovieLibrary;
 
-    public ErrorCommand(String[] args) {
-        this.args = args;
+public class ErrorCommand extends Command {
+
+    public ErrorCommand(MovieLibrary library, String[] args) {
+        super(library, args);
     }
 
     @Override
