@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class MovieLibrary {
-    private List movies = new ArrayList();
+    private List<Movie> movies = new ArrayList<Movie>();
 
     public MovieLibrary() {
     }
@@ -14,11 +14,11 @@ public class MovieLibrary {
         this.movies = new ArrayList<Movie>(Arrays.asList(movies));
     }
 
-    public List getMovies() {
+    public List<Movie> getMovies() {
         return movies;
     }
 
-    public void setMovies(List movies) {
+    public void setMovies(List<Movie> movies) {
         this.movies = movies;
     }
 }
