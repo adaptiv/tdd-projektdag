@@ -14,11 +14,11 @@ public class MovieRepository {
     @SuppressWarnings("serial")
     public void save(final MovieLibrary library) throws IOException {
         new Yaml().dump(new HashMap() {{
-            put("movies", library);
+            put("library", library);
         }}, new FileWriter("movies.yml"));
     }
 
     public MovieLibrary load() throws FileNotFoundException {
-        return (MovieLibrary) ((Map) new Yaml().load(new FileReader("movies.yml"))).get("movies");
+        return (MovieLibrary) ((Map) new Yaml().load(new FileReader("movies.yml"))).get("library");
     }
 }
