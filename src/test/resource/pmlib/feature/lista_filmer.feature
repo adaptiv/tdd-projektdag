@@ -9,3 +9,10 @@ Egenskap: Lista filmer
     Givet att jag har en filmsamling
     När jag listar innehåller i filmbilioteket
     Så kommer den innehålla samtliga filmer
+
+  Scenario: Se vilka filmer som är utlånade i filmlistan
+    Givet att jag har en filmsamling
+    Och jag lånat ut en film
+    När jag listar innehåller i filmbilioteket
+    Så kommer den innehålla samtliga filmer
+    Och den utlånade filmen kommer vara markerad som utlånad

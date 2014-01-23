@@ -19,6 +19,6 @@ public class AddCommand extends Command {
         } catch (DuplicateMovieException e) {
             return String.format("Already exists: %s", movie);
         }
-        return null;
+        return "";
     }
 }

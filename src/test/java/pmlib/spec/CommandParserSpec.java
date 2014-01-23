@@ -34,4 +34,10 @@ public class CommandParserSpec {
         Command command = new CommandParser(new MovieLibrary()).buildCommand(new String[] {"list"});
         assertEquals(ListCommand.class, command.getClass());
     }
+
+    @Test
+    public void parseLendCommand() throws ReflectiveOperationException {
+        Command command = new CommandParser(new MovieLibrary()).buildCommand(new String[] {"lend", "Alien"});
+        assertEquals(LendCommand.class, command.getClass());
+    }
 }

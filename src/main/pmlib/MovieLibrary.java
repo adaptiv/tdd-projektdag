@@ -23,9 +23,22 @@ public class MovieLibrary {
     }
 
     public void add(Movie movie) throws DuplicateMovieException {
-        if (movies.contains(movie)){
+        if (movies.contains(movie)) {
             throw new DuplicateMovieException();
         }
         movies.add(movie);
+    }
+
+    public Movie getMovieByTitle(String title) {
+        for (Movie movie : movies) {
+            if (movie.getTitle().equals(title)) {
+                return movie;
+            }
+        }
+        return null;
+    }
+
+    public void lend(Movie movie) {
+        movie.setLoaned(true);
     }
 }

@@ -16,6 +16,7 @@ public class CommandParser {
         commandByName.put("count", CountCommand.class);
         commandByName.put("add", AddCommand.class);
         commandByName.put("list", ListCommand.class);
+        commandByName.put("lend", LendCommand.class);
     }
 
     public Command buildCommand(String[] args) {

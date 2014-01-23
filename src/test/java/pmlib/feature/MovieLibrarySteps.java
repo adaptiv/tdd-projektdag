@@ -1,13 +1,11 @@
 package pmlib.feature;
 
-import cucumber.api.PendingException;
 import cucumber.api.java.sv.Givet;
 import cucumber.api.java.sv.När;
 import cucumber.api.java.sv.Så;
 import pmlib.CommandParser;
 import pmlib.Movie;
 import pmlib.MovieLibrary;
-import pmlib.MovieRepository;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.startsWith;
@@ -20,6 +18,7 @@ public class MovieLibrarySteps {
     private CommandParser parser;
     private String result;
     private MovieLibrary library;
+    private Movie movie;
 
     @Givet("att filmbiblioteket är tomt")
     public void createEmptyLibrary() {
@@ -51,6 +50,13 @@ public class MovieLibrarySteps {
         parser = new CommandParser(library);
     }
 
+    @När("^jag lånat ut en film$")
+    public void lendMovie() throws Throwable {
+        movie = library.getMovies().get(0);
+        result = parser.buildCommand(new String[] {"lend", movie.getTitle()}).call();
+        assertThat(result, not(startsWith("Unknown command:")));
+    }
+
     @När("^jag räknar antalet filmer$")
     public void countMovies() throws Exception {
         result = parser.buildCommand(new String[] {"count"}).call();
@@ -79,5 +85,10 @@ public class MovieLibrarySteps {
         for (Movie movie : library.getMovies()) {
             assertThat(result, containsString(movie.getTitle()));
         }
+    }
+
+    @Så("^den utlånade filmen kommer vara markerad som utlånad$")
+    public void movieIsLended() throws Throwable {
+        assertThat(movie.isLoaned(), equalTo(true));
     }
 }
